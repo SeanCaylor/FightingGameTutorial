@@ -168,7 +168,9 @@ function animate() {
         enemy.isAttacking
     ) {
         enemy.isAttacking = false;
-        console.log("P2Go");
+        player.health -= 20;
+        document.querySelector("#playerHealth").style.width =
+            player.health + "%";
     }
 }
 
