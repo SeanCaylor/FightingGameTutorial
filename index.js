@@ -8,7 +8,8 @@ c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.7;
 class Sprite {
-    constructor({ position, velocity, color = "red", offset }) {
+    constructor({ health = 100, position, velocity, color = "red", offset }) {
+        this.health = health;
         this.position = position;
         this.velocity = velocity;
         this.width = 50;
@@ -156,7 +157,8 @@ function animate() {
         player.isAttacking
     ) {
         player.isAttacking = false;
-        console.log("Go");
+        enemy.health -= 20;
+        document.querySelector("#enemyHealth").style.width = enemy.health + "%";
     }
     if (
         collision({
