@@ -7,45 +7,6 @@ canvas.height = 576;
 c.fillRect(0, 0, canvas.width, canvas.height);
 
 const gravity = 0.7;
-const background = new Sprite({
-    position: {
-        x: 0,
-        y: 0,
-    },
-    imgSrc: "./img/background.png",
-});
-
-const player = new Fighter({
-    position: {
-        x: 0,
-        y: 0,
-    },
-    velocity: {
-        x: 0,
-        y: 0,
-    },
-    offset: {
-        x: 0,
-        y: 0,
-    },
-});
-
-const enemy = new Fighter({
-    position: {
-        x: 400,
-        y: 100,
-    },
-    velocity: {
-        x: 0,
-        y: 0,
-    },
-    color: "blue",
-    offset: {
-        x: -50,
-        y: 0,
-    },
-});
-
 const keys = {
     d: {
         pressed: false,
@@ -66,6 +27,51 @@ const keys = {
         pressed: false,
     },
 };
+
+const background = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imgSrc: "./img/background.png",
+});
+const shop = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imgSrc: "./img/background.png",
+});
+
+const enemy = new Fighter({
+    position: {
+        x: 400,
+        y: 100,
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    color: "blue",
+    offset: {
+        x: -50,
+        y: 0,
+    },
+});
+const player = new Fighter({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    offset: {
+        x: 0,
+        y: 0,
+    },
+});
 
 countdownTimer();
 
@@ -160,7 +166,6 @@ window.addEventListener("keydown", (event) => {
             break;
     }
 });
-
 window.addEventListener("keyup", (event) => {
     switch (event.key) {
         case "d":
