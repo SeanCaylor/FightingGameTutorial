@@ -1,4 +1,4 @@
-let timer = 10;
+let timer = 60;
 let timerId;
 
 function collision({ rectangle1, rectangle2 }) {
