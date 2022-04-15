@@ -46,6 +46,7 @@ const shop = new Sprite({
 });
 
 const enemy = new Fighter({
+    name: "Kenji",
     position: {
         x: (canvas.width / 3) * 2,
         y: 330,
@@ -112,6 +113,7 @@ const enemy = new Fighter({
     },
 });
 const player = new Fighter({
+    name: "Samurai Mack",
     position: {
         x: canvas.width / 3 - 50,
         y: 330,

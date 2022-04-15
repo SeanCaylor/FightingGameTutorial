@@ -48,6 +48,7 @@ class Sprite {
 }
 class Fighter extends Sprite {
     constructor({
+        name,
         health = 100,
         position,
         velocity,
@@ -68,7 +69,7 @@ class Fighter extends Sprite {
             position,
             offset,
         });
-
+        this.name = name;
         this.health = health;
         this.velocity = velocity;
         this.speed = speed;
