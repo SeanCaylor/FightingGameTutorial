@@ -1,4 +1,4 @@
-let timer = 60;
+let timer = 10;
 let timerId;
 
 function collision({ rectangle1, rectangle2 }) {
@@ -22,6 +22,18 @@ function countdownTimer() {
 
     if (timer === 0) {
         determineWinner({ player, enemy, timerId });
+        switch (document.querySelector("#displayText").innerHTML) {
+            case "Tie":
+                player.switchSprite("death");
+                enemy.switchSprite("death");
+                break;
+            case "Player One Wins":
+                enemy.switchSprite("death");
+                break;
+            case "Player Two Wins":
+                player.switchSprite("death");
+                break;
+        }
     }
 }
 function determineWinner({ player, enemy, timerId }) {
