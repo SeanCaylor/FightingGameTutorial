@@ -28,6 +28,7 @@ class Sprite {
     }
     draw() {
         c.drawImage(
+            // c.scale(1, 1)
             this.image,
             //crop location
             this.framesCurrent * (this.image.width / this.framesMax),
@@ -41,10 +42,31 @@ class Sprite {
             this.image.height * this.scale
         );
     }
+    // mirrorDraw() {
+    //     c.scale(-1, 1);
+    //     c.drawImage(
+    //         this.image,
+    //         //crop location
+    //         this.framesCurrent * (this.image.width / this.framesMax),
+    //         0,
+    //         this.image.width / this.framesMax,
+    //         this.image.height,
+    //         //image size
+    //         this.position.x - this.offset.x,
+    //         this.position.y - this.offset.y,
+    //         (this.image.width / this.framesMax) * this.scale,
+    //         this.image.height * this.scale
+    //     );
+    // }
     update() {
         this.draw();
         this.animateFrames();
     }
+    // mirrorUpdate() {
+    //     c.setTransform(1, 0, 0, 1, 0, 0);
+    //     this.mirrorDraw();
+    //     this.animateFrames();
+    // }
 }
 class Fighter extends Sprite {
     constructor({
@@ -60,7 +82,7 @@ class Fighter extends Sprite {
         offset = { x: 0, y: 0 },
         sprites,
         attackBox = { offset: {}, width: undefined, height: undefined },
-        att1 = { damage: 20, dFrame: 4, knockBack: 50 },
+        att1 = { damage: 20, dFrame: 4, knockBack: 100 },
     }) {
         super({
             imgSrc,
@@ -172,10 +194,12 @@ class Fighter extends Sprite {
         }
     }
     takeHit(dam) {
-        this.health - dam <= 0 ? (this.health = 0) : (this.health -= dam);
-        this.health === 0
-            ? this.switchSprite("death")
-            : this.switchSprite("takeHit");
+        if (this.sprites !== "takeHit") {
+            this.health - dam <= 0 ? (this.health = 0) : (this.health -= dam);
+            this.health === 0
+                ? this.switchSprite("death")
+                : this.switchSprite("takeHit");
+        } else return;
     }
     update() {
         this.draw();
@@ -199,5 +223,10 @@ class Fighter extends Sprite {
             this.velocity.y = 0;
             this.position.y = 330;
         } else this.velocity.y += gravity;
+
+        // if (this.position.x <= canvas.position.x + 3) {
+        //     this.velocity.x = 0;
+        //     this.position.x = canvas.position.x + 3;
+        // }
     }
 }

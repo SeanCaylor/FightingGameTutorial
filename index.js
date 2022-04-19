@@ -109,7 +109,7 @@ const enemy = new Fighter({
     att1: {
         damage: 15,
         dFrame: 2,
-        knockBack: 35,
+        knockBack: 70,
     },
 });
 const player = new Fighter({
@@ -281,9 +281,6 @@ window.addEventListener("keydown", (event) => {
                     ? (player.velocity.y += player.jump * -1)
                     : null;
                 break;
-            case " ":
-                player.attack();
-                break;
         }
     }
     //player two
@@ -302,9 +299,6 @@ window.addEventListener("keydown", (event) => {
                     ? (enemy.velocity.y += enemy.jump * -1)
                     : null;
                 break;
-            case "ArrowDown":
-                enemy.attack();
-                break;
         }
     }
 });
@@ -319,6 +313,9 @@ window.addEventListener("keyup", (event) => {
         case "w":
             keys.w.pressed = false;
             break;
+        case " ":
+            player.attack();
+            break;
 
         case "ArrowRight":
             keys.ArrowRight.pressed = false;
@@ -328,6 +325,9 @@ window.addEventListener("keyup", (event) => {
             break;
         case "ArrowUp":
             keys.ArrowUp.pressed = false;
+            break;
+        case "ArrowDown":
+            enemy.attack();
             break;
     }
 });
